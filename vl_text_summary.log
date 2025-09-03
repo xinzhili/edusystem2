@@ -242,3 +242,6 @@
 2025-08-14 01:02:23,864 - INFO - VLTextSummarizer initialized successfully
 2025-08-14 01:03:04,307 - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
 2025-08-14 01:03:04,319 - INFO - Successfully analyzed image: D:\vsc\edusystem\src\core\wrongquestion.png
+2025-09-03 18:53:04,169 - INFO - VLTextSummarizer initialized successfully
+2025-09-03 18:53:54,820 - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-03 18:53:54,827 - INFO - Successfully analyzed image: D:\vsc\edusystem\src\core\wrongquestion.png
