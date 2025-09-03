@@ -30,5 +30,3 @@ def analyze_learning_progress(student_id: str) -> Dict:
 if __name__ == "__main__":
     print("学情分析结果2025005：")
     print(analyze_learning_progress("2025005"))  # 测试分析学号2025001
-    # print("学情分析结果2025005：")
-    # print(analyze_learning_progress("2025002"))  # 测试分析学号2025002
