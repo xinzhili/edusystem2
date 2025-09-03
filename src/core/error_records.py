@@ -25,12 +25,7 @@ class ErrorRecordManager:
                 input=texts,
                 text_type="document"  # 可选：指定文本类型（document/query）
             )
-            # print("API响应结构:", resp)
-            # resp = dashscope.TextEmbedding.call(
-            #     model="text-embedding-v4",
-            #     input=["测试文本"],
-            #     text_type="document"
-            # )
+
             return [np.array(item['embedding']) for item in resp.output['embeddings']] #大模型返回的数据存在embeddings字段，而不是‘data'
         except Exception as e:
             print(f"API调用失败: {e}")
