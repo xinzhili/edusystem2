@@ -1,0 +1,13 @@
+{
+  "connections": [
+    {
+      "id": "postgres1",
+      "type": "postgres",
+      "host": "postgres1",
+      "port": 5433,
+      "name": "learning_db",
+      "user": "postgres",
+      "password": "123456"
+    }
+  ]
+}
