@@ -4,9 +4,9 @@ import numpy as np
 import psycopg2
 from datetime import datetime
 from pgvector.psycopg2 import register_vector
-from config.settings import PG_CONFIG
+from config.settings import PG_CONFIG, QWEN_CONFIG
     
-def search_similar_questions(query_text: str, top_k: int = 3) -> List[tuple]:
+def search_similar_questions(student_id: int,query_text: str, top_k: int = 3) -> List[tuple]:
         """语义搜索相似错题"""
         try:
             # 1. 生成查询向量
@@ -26,11 +26,12 @@ def search_similar_questions(query_text: str, top_k: int = 3) -> List[tuple]:
             register_vector(conn)  # 注册pgvector类型
             with conn.cursor() as cursor:
                             cursor.execute("""
-                                    SELECT id, weak_knowledge_point, 1 - (question_vector <=> %s) AS similarity
-                                    FROM student_learning_analysis
-                                    ORDER BY question_vector <=> %s
+                                    SELECT study_detail_id,student_id, details, 1 - (details_embedding <=> %s) AS similarity
+                                    FROM study_detail
+                                    where student_id=%s
+                                    ORDER BY details_embedding <=> %s
                                     LIMIT %s
-                                """, (query_vec, query_vec, top_k))
+                                """, (query_vec,student_id, query_vec, top_k))
                             return cursor.fetchall()
 
         except Exception as e:
@@ -41,7 +42,8 @@ def search_similar_questions(query_text: str, top_k: int = 3) -> List[tuple]:
 if __name__ == "__main__":
     # 测试代码
     # qembedding = ErrorRecordManager()
-    query_text = "数位的认识做错了吗？"
-    results = search_similar_questions(query_text,top_k=2)
+    query_text = "有数位顺序吗？"
+    student_id = 1
+    results = search_similar_questions(student_id,query_text,top_k=2)
     for res in results:
-        print(f"ID: {res[0]}, Question: {res[1]}, Similarity: {res[2]}")
+        print(f"study detail ID: {res[0]}, student ID: {res[1]}, Similarity: {res[2]}")

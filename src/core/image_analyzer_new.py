@@ -96,6 +96,7 @@ class VLTextSummarizer:
             except Exception as e:
                 logger.error(f"Error processing {image_path}: {str(e)}")
                 raise
+
     def _convert_pdf_to_image(self, pdf_path: str) -> str:
         """将PDF转换为临时图片文件，返回图片路径"""
         try:
@@ -142,10 +143,7 @@ class VLTextSummarizer:
                 model="qwen-vl-max-latest",
                 # model="qwen2.5-vl-72b-instruct",
                 messages=[
-                    # {
-                    #     "role": "system",
-                    #     "content": [{"type": "text", "text": "You are a helpful assistant."}]
-                    # },
+
                     {
                         "role": "user",
                         "content": [
@@ -221,7 +219,7 @@ def analyze_document(image_path: str):
         
         print("\n=== 文档内容分析 ===")
         raw_response = analyzer.analyze_image(image_path, analysis_prompt)
-        print("原始响",raw_response)
+        print("原始响应",raw_response)
 
 
 
@@ -232,6 +230,7 @@ def analyze_document(image_path: str):
 
         # 3. 解析为Python字典
         error_data = json.loads(json_str)
+        # print(f"解析后的错误数据: {error_data}")
         
         # 4. 验证必要字段
         required_fields = ["all_data"]

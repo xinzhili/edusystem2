@@ -10,6 +10,6 @@ PG_CONFIG = {
 
 # 千问API配置
 QWEN_CONFIG = {
-    "api_key": "your dashscope key",  # 替换为实际API密钥
+    "api_key": "you api key ",  # 替换为实际API密钥
     "model": "qwen-max-latest"
 }
