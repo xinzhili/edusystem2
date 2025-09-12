@@ -1,5 +1,12 @@
-psycopg2-binary>=2.9.5
-dashscope>=2.0.0
-numpy>=1.24.0
-pgvector>=0.2.0
-pytest>=7.0.0
+dashscope==1.23.9
+fastmcp==2.12.2
+fitz==0.0.1.dev2
+numpy==2.3.3
+openai==1.107.1
+pdf2image==1.17.0
+pgvector==0.4.1
+Pillow==11.3.0
+psycopg2_binary==2.9.10
+python-dotenv==1.1.1
+qwen_agent==0.0.29
+utils==1.0.2

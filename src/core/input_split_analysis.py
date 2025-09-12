@@ -45,6 +45,7 @@ class ErrorRecordManager:
         try:
             print("saving individual errors...")
             print(f"error_data 类型: {type(error_data)}")  # 应输出 <class 'dict'>
+            # print(f'input error data',error_data)  
             
             with self.conn.cursor() as cursor:
                 # 1. 提取所有错题数据
@@ -122,84 +123,9 @@ class ErrorRecordManager:
 
 if __name__ == "__main__":
 
-#     error_data = {
-#     "all_data": [
-#         {
-#             "original_input_id": "1",
-#             "wrong_q_sum": [
-#                 {
-#                     "question": "数位从（ ）边起，第1位是个位，第2位是（ ）位。",
-#                     "student_answer": "左 十",
-#                     "correct_answer": "右 十",
-#                     "error_type": "理解错误",
-#                     "analysis": "学生对数位顺序的理解有误，应从右边开始计数。",
-#                     "subject": "数学",
-#                     "knowledge_grade": 1,
-#                     "knowledge_points": ["数位顺序", "个位和十位"],
-#                     "difficulty": 2,
-#                     "true_false_flag": True
-#                 }
-#             ]
-#         },
-#         {
-#             "original_input_id": "3",
-#             "wrong_q_sum": [
-#                 {
-#                     "question": "15里面有（ ）个十和（ ）个一。",
-#                     "student_answer": "1 1",
-#                     "correct_answer": "1 5",
-#                     "error_type": "计算错误",
-#                     "analysis": "学生未能正确分解数字15为1个十和5个一。",
-#                     "subject": "数学",
-#                     "knowledge_grade": 1,
-#                     "knowledge_points": ["数的组成"],
-#                     "difficulty": 1,
-#                     "true_false_flag": True
-#                 }
-#             ]
-#         },
-#         {
-#             "original_input_id": "4",
-#             "wrong_q_sum": [
-#                 {
-#                     "question": "与19相邻的两个数分别是（ ）和（ ）。",
-#                     "student_answer": "18 20",
-#                     "correct_answer": "18 20",
-#                     "error_type": "无",
-#                     "analysis": "学生答案实际正确，但被标记为错误。",
-#                     "subject": "数学",
-#                     "knowledge_grade": 1,
-#                     "knowledge_points": ["相邻数"],
-#                     "difficulty": 1,
-#                     "true_false_flag": False
-#                 }
-#             ]
-#         },
-#         {
-#             "original_input_id": "5",
-#             "wrong_q_sum": [
-#                 {
-#                     "question": "14前面的第3个数是（ ），后面的第3个数是（ ）。",
-#                     "student_answer": "17 11",
-#                     "correct_answer": "11 17",
-#                     "error_type": "理解错误",
-#                     "analysis": "学生混淆了“前面”和“后面”的概念，导致答案颠倒。",
-#                     "subject": "数学",
-#                     "knowledge_grade": 1,
-#                     "knowledge_points": ["数列顺序"],
-#                     "difficulty": 2,
-#                     "true_false_flag": True
-#                 }
-#             ]
-#         }
-#     ]
-# }
-
     image_path = r"D:\vsc\edusystem\src\core\wrongquestion.png"  # 替换为你的图片路径
-    # vLTextSummarizer = VLTextSummarizer()
     print("开始分析图片中的错题信息...")
     error_data = analyze_document(image_path) 
-    # 存储到数据库
     print("分析结果:", error_data)
     manager = ErrorRecordManager()
     if manager.save_individual_errors(1,error_data):

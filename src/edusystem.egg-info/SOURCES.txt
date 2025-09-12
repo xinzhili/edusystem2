@@ -1,9 +1,0 @@
-setup.py
-src/edusystem.egg-info/PKG-INFO
-src/edusystem.egg-info/SOURCES.txt
-src/edusystem.egg-info/dependency_links.txt
-src/edusystem.egg-info/requires.txt
-src/edusystem.egg-info/top_level.txt
-test/test_learning_analysis.py
-test/test_qwen_integration.py
-test/test_rag_engine.py
